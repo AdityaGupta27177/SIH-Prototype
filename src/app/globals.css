@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Lora:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #F6F4EE;
+  --foreground: #1F2421;
+}
+
+body {
+  color: var(--foreground);
+  background-color: var(--background);
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Subtle organic paper grain texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: 
+    radial-gradient(#DED8C9 0.75px, transparent 0.75px), 
+    linear-gradient(to bottom, rgba(246, 244, 238, 0.75), rgba(246, 244, 238, 0.95));
+  background-size: 20px 20px, 100% 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@layer components {
+  /* Document Card with soft tactile border */
+  .doc-card {
+    @apply bg-white border border-canvas-300 rounded-xl shadow-doc transition-all;
+  }
+
+  .doc-card-interactive {
+    @apply doc-card hover:border-olive-600 hover:shadow-doc-lg transition-all duration-150;
+  }
+
+  /* Tactile Credential Header Band */
+  .doc-header-band {
+    @apply bg-olive-900 text-canvas-50 px-6 py-4 rounded-t-xl border-b-2 border-wheat-600 shadow-inner;
+  }
+
+  /* Primary Button — Deep Aged Olive */
+  .btn-gov-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-olive-800 hover:bg-olive-900 active:bg-olive-950 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-canvas-50 shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-olive-700 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Secondary Button — Rich Umber Soil */
+  .btn-gov-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-canvas-300 bg-canvas-50 hover:bg-canvas-200 active:bg-canvas-300 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-umber-700 shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-umber-600 focus:ring-offset-2;
+  }
+
+  /* Success / Verification Action */
+  .btn-gov-success {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-olive-800 hover:bg-olive-900 active:bg-olive-950 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-olive-700 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* Danger / Objection Action */
+  .btn-gov-danger {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-crimson-700 hover:bg-crimson-800 active:bg-crimson-700 px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-white shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-crimson-600 focus:ring-offset-2;
+  }
+
+  /* Input Fields */
+  .gov-input {
+    @apply w-full rounded-lg border border-canvas-300 bg-white px-3.5 py-2.5 text-sm text-ink-900 placeholder:text-canvas-400 focus:border-olive-800 focus:outline-none focus:ring-2 focus:ring-olive-800/15 transition-all font-sans;
+  }
+
+  .gov-label {
+    @apply block text-[11px] font-bold uppercase tracking-wider text-ink-700 mb-1.5 font-mono;
+  }
+
+  /* Tactile Credential Paper Border */
+  .security-border {
+    border: 1px solid #DED8C9;
+    outline: 1px solid #1E3A2B;
+    outline-offset: -5px;
+  }
+}
+
+/* Leaflet maps styling */
+.leaflet-container {
+  font-family: inherit !important;
+  border-radius: 0.5rem;
+}
+
+.leaflet-control-attribution {
+  background: rgba(246, 244, 238, 0.9) !important;
+  color: #5A5445 !important;
+  font-size: 10px !important;
+}
